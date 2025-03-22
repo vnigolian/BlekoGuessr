@@ -233,7 +233,7 @@ def main():
         if not incorrect:
             print("BIM! Tout juste!")
             
-            if(round_count):
+            if(round_count > 1):
                 print(f"Et ça t'a pris que {round_count} tours!")
             else:
                 print("Et du premier coup!!")
