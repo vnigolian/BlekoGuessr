@@ -200,12 +200,15 @@ def main():
 
         choice = input("Ton choix : ")
         
-        if choice != "jumeaux":
-            twins_mode = True
-            break
-        else:
+        if choice == "jumeaux":
+            print(" ======================")
             print(" MODE JUMEAUX ENCLENCHÉ")
-        
+            print(" ======================")
+            twins_mode = True
+        else:
+            break
+            
+    random.shuffle(contacts)
     incorrect = contacts;
     
     if(twins_mode):
@@ -223,7 +226,7 @@ def main():
         elif choice == "3":
             incorrect = play_name_game(incorrect, args.max_count)
         else:
-            print("Y a pas le mode {choice}, désolé chef.fe")
+            print(f"Y a pas le mode {choice}, désolé chef.fe")
             break
     
 
