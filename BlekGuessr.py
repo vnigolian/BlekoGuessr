@@ -169,6 +169,13 @@ def play_first_name_game(contacts, max_count=None):
     print(f"\nTour terminé ! Ton score : {score}/{len(contacts)}")
     return incorrect_contacts
 
+def filter_contacts_by_first_name(contacts, first_names_to_include):
+    filtered_contacts = []
+    for contact in contacts:
+        if get_first_name(contact) and get_first_name(contact).lower() in [name.lower() for name in first_names_to_include]:
+            filtered_contacts.append(contact)
+    return filtered_contacts
+    
 def main():
     """Fonction principale pour exécuter le jeu."""
     parser = argparse.ArgumentParser(description="Jeu de deviner les contacts à partir d'un fichier VCF.")
@@ -180,15 +187,29 @@ def main():
 
     if not contacts:
         return
+        
+    twins_mode = False
+    
+    while True:
 
-    print("\n Choisis un mode de jeu :")
-    print("1. Prénom")
-    print("2. Poste")
-    print("3. Nom complet")
-    print("NOTE: les réponses ne sont pas sensibles à la casse, e.g. marie ou Marie, ça change rien.")
+        print("\n Choisis un mode de jeu :")
+        print("1. Prénom")
+        print("2. Poste")
+        print("3. Nom complet")
+        print("NOTE: les réponses ne sont pas sensibles à la casse, e.g. marie ou Marie, ça change rien.")
 
-    choice = input("Ton choix : ")
+        choice = input("Ton choix : ")
+        
+        if choice != "jumeaux":
+            twins_mode = True
+            break
+        else:
+            print(" MODE JUMEAUX ENCLENCHÉ")
+        
     incorrect = contacts;
+    
+    if(twins_mode):
+        incorrect =filter_contacts_by_first_name(incorrect, ["Anthonin", "Arthus"])
 
     round_count = 0
     while True:
