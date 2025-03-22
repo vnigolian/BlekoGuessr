@@ -204,12 +204,10 @@ def main():
         else:
             print("Y a pas le mode {choice}, désolé chef.fe")
             break
-        
-        
-        os.system('cls')
+    
 
         if not incorrect:
-            print(f"BIM! Tout juste! Et ça t'as pris que {round_count} tours!")
+            print(f"BIM! Tout juste! Et ça t'a pris que {round_count} tours!")
             break
 
 if __name__ == "__main__":
