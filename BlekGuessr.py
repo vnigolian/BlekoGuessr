@@ -1,3 +1,7 @@
+# created by Val l'Animal on the 22nd of March 2025
+# shamelessly generated with an LLM because I'd rather rub my balls with nettles than coding in python.
+
+
 import vobject
 import random
 import io
