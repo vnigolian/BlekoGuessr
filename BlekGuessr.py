@@ -231,7 +231,13 @@ def main():
     
 
         if not incorrect:
-            print(f"BIM! Tout juste! Et ça t'a pris que {round_count} tours!")
+            print("BIM! Tout juste!")
+            
+            if(round_count):
+                print(f"Et ça t'a pris que {round_count} tours!")
+            else:
+                print("Et du premier coup!!")
+            
             break
 
 if __name__ == "__main__":
