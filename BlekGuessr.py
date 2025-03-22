@@ -5,7 +5,17 @@ from PIL import Image
 import base64
 import argparse
 import matplotlib.pyplot as plt
+import os
+import platform
 
+def clear_screen():
+    """Clears the terminal screen."""
+    system = platform.system()
+    if system == "Windows":
+        os.system('cls')
+    else:  # macOS and Linux
+        os.system('clear')
+        
 def load_contacts(vcf_file):
     """Loads contacts from a VCF file."""
     contacts = []
@@ -176,7 +186,11 @@ def main():
     choice = input("Ton choix : ")
     incorrect = contacts;
 
+    round_count = 0
     while True:
+        round_count += 1
+        #clear_screen() #bien sur le principe mais relou parce que ça cache la réponse à la dernière question
+        
         if choice == "1":
             incorrect = play_first_name_game(incorrect, args.max_count)
         elif choice == "2":
@@ -185,9 +199,13 @@ def main():
             incorrect = play_name_game(incorrect, args.max_count)
         else:
             print("Y a pas le mode {choice}, désolé chef.fe")
+            break
         
+        
+        os.system('cls')
+
         if not incorrect:
-            print("BIM! Tout juste!")
+            print(f"BIM! Tout juste! Et ça t'as pris que {round_count} tours!")
             break
 
 if __name__ == "__main__":
